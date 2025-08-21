@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
 import './App.css';
 
 import Login from './pages/Login';
@@ -11,12 +11,17 @@ import Attendance from './pages/Attendance';
 import Profile from './pages/Profile';
 import Reports from './pages/Reports';
 import NotFound from './pages/NotFound';
+import ProtectedRoute from './components/ProtectedRoute';
+import Sidebar from './components/Sidebar';
 
 // PUBLIC_INTERFACE
+/**
+ * Main application component.
+ * It sets up the theme and routing for the application.
+ */
 function App() {
   const [theme, setTheme] = useState('light');
 
-  // Effect to apply theme to document element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -25,11 +30,20 @@ function App() {
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
+  
+  const DashboardLayout = () => (
+    <div className="dashboard-layout">
+      <Sidebar />
+      <main className="dashboard-content">
+        <Outlet /> {/* Child routes will render here */}
+      </main>
+    </div>
+  );
+
 
   return (
     <Router>
       <div className="App">
-        {/* This button is for demonstration. It can be moved to a navbar later */}
         <button
           className="theme-toggle"
           onClick={toggleTheme}
@@ -39,13 +53,17 @@ function App() {
         </button>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/rooms" element={<Rooms />} />
-          <Route path="/students" element={<Students />} />
-          <Route path="/payments" element={<Payments />} />
-          <Route path="/attendance" element={<Attendance />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/reports" element={<Reports />} />
+          <Route element={<ProtectedRoute />}>
+            <Route element={<DashboardLayout />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/rooms" element={<Rooms />} />
+              <Route path="/students" element={<Students />} />
+              <Route path="/payments" element={<Payments />} />
+              <Route path="/attendance" element={<Attendance />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/reports" element={<Reports />} />
+            </Route>
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
