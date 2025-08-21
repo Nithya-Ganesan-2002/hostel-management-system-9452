@@ -27,4 +27,12 @@ export const createStudent = (studentData) => api.post('/students', studentData)
 export const updateStudent = (id, studentData) => api.put(`/students/${id}`, studentData);
 export const deleteStudent = (id) => api.delete(`/students/${id}`);
 
+// Fee-Payment management
+export const getPayments = () => api.get('/payments');
+export const createPayment = (paymentData) => api.post('/payments', paymentData);
+
+// Attendance management
+export const getAttendance = (params) => api.get('/attendance', { params });
+export const markAttendance = (attendanceData) => api.post('/attendance', attendanceData);
+
 export default api;
