@@ -8,3 +8,7 @@
   margin-left: 250px; /* Same as sidebar width */
   background-color: var(--bg-primary);
 }
+
+.dashboard-section {
+  margin-top: 30px;
+}

@@ -10,6 +10,7 @@ import Payments from './pages/Payments';
 import Attendance from './pages/Attendance';
 import Profile from './pages/Profile';
 import Reports from './pages/Reports';
+import NotificationsPage from './pages/Notifications';
 import NotFound from './pages/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 import Sidebar from './components/Sidebar';
@@ -62,6 +63,7 @@ function App() {
               <Route path="/attendance" element={<Attendance />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/reports" element={<Reports />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

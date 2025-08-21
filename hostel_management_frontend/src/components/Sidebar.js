@@ -26,6 +26,9 @@ function Sidebar() {
         <NavLink to="/reports" className="sidebar-link">
           Reports
         </NavLink>
+        <NavLink to="/notifications" className="sidebar-link">
+          Notifications
+        </NavLink>
         <NavLink to="/profile" className="sidebar-link">
           Profile
         </NavLink>

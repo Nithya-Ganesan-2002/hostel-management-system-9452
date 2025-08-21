@@ -35,4 +35,12 @@ export const createPayment = (paymentData) => api.post('/payments', paymentData)
 export const getAttendance = (params) => api.get('/attendance', { params });
 export const markAttendance = (attendanceData) => api.post('/attendance', attendanceData);
 
+// Notifications
+export const getNotifications = (params) => api.get('/notifications', { params });
+
+// Profile
+export const getProfile = (id) => api.get(`/users/${id}`);
+export const updateProfile = (id, profileData) => api.put(`/users/${id}`, profileData);
+
+
 export default api;
