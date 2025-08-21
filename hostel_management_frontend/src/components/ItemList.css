@@ -1,0 +1,46 @@
+.item-list {
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.item-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.item-list th,
+.item-list td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.item-list th {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.item-list tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.item-list .edit-btn,
+.item-list .delete-btn {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.item-list .edit-btn {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+.item-list .delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
